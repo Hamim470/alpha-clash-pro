@@ -43,6 +43,10 @@ function handleKeyboardKeyUpEvent(event){
         // currentLifeElement.innerText=newLife;
         setTextElementValueById('current-life',updatedLife);
 
+        if(updatedLife===0){
+            gameOver();
+        }
+
     }
 }
 document.addEventListener('keyup',handleKeyboardKeyUpEvent);
@@ -59,6 +63,16 @@ function continueGame(){
 
 function play(){
     hideElementById('home-screen');
+    hideElementById('final-score');
     showElementById('play-ground');
+
+    setTextElementValueById('current-life',5);
+    setTextElementValueById('current-score',0);
+
     continueGame();
+}
+
+function gameOver(){
+    hideElementById('play-ground');
+    showElementById('final-score');
 }
