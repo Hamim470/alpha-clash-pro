@@ -12,6 +12,10 @@
 
 function handleKeyboardKeyUpEvent(event){
     const playerPressed=event.key;
+
+    if(playerPressed==='Escape'){
+        gameOver();
+    }
     
     const currentAlphabetElement=document.getElementById('current-alphabet');
     const currentAlphabet=currentAlphabetElement.innerText;
@@ -75,4 +79,13 @@ function play(){
 function gameOver(){
     hideElementById('play-ground');
     showElementById('final-score');
+
+    // update final score
+    const lastScoreElement=document.getElementById('current-score');
+    const lastScore=lastScoreElement.innerText;
+    setTextElementValueById('last-score',lastScore);
+
+    // clear the last selected alphabet highlight
+    const currentAlphabet=getElementTextById('current-alphabet');
+    removeBackgroundColorById(currentAlphabet);
 }
